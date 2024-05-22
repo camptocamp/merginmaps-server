@@ -28,7 +28,7 @@
     "file-saver": "^2.0.5",
     "lodash": "^4.17.21",
     "material-icons": "^0.2.3",
-    "pdfjs-dist": "2.5.207",
+    "pdfjs-dist": "4.2.67",
     "pinia": "^2.1.7",
     "portal-vue": "^2.1.7",
     "sass": "^1.69.5",

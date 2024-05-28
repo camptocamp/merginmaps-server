@@ -47,11 +47,8 @@ services:
       dockerfile: Dockerfile
     container_name: celery-beat
     user: 901:999
-    environment:
-      BROKER_URL: redis://merginmaps-redis:6379/0
-      BROKER_TRANSPORT_OPTIONS: "{ 'master_name': 'mymaster' }"
-      CELERY_RESULT_BACKEND: redis://merginmaps-redis:6379/0
-      CELERY_RESULT_BACKEND_TRANSPORT_OPTIONS: "{ 'master_name': 'mymaster' }"
+    env_file:
+      - .prod.env
     depends_on:
       - redis
       - server-gunicorn
@@ -65,13 +62,8 @@ services:
       dockerfile: Dockerfile
     container_name: celery-worker
     user: 901:999
-    environment:
-      BROKER_URL: redis://merginmaps-redis:6379/0
-      BROKER_TRANSPORT_OPTIONS: "{ 'master_name': 'mymaster' }"
-      CELERY_RESULT_BACKEND: redis://merginmaps-redis:6379/0
-      CELERY_RESULT_BACKEND_TRANSPORT_OPTIONS: "{ 'master_name': 'mymaster' }"
-      DB_PORT: 5432
-      DB_HOST: db
+    env_file:
+      - .prod.env
     depends_on:
       - redis
       - server-gunicorn

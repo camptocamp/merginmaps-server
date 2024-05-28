@@ -24,11 +24,6 @@ RUN apt-get update -y && \
 RUN pip3 install --upgrade pip
 RUN ln -s /usr/lib/x86_64-linux-musl/libc.so /lib/libc.musl-x86_64.so.1
 
-# create mergin user to run container with
-RUN groupadd -r mergin -g 901
-RUN groupadd -r mergin-family -g 999
-RUN useradd -u 901 -r --home-dir /app --create-home -g mergin -G mergin-family -s /sbin/nologin  mergin
-
 # copy app files
 COPY . /app
 WORKDIR /app
@@ -40,8 +35,6 @@ ENV LANG=C.UTF-8
 
 RUN pipenv install --system --deploy --verbose
 RUN pip3 install flower==0.9.7
-
-USER mergin
 
 COPY ./entrypoint.sh .
 ENTRYPOINT ["/app/entrypoint.sh"]

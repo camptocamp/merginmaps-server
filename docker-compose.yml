@@ -29,7 +29,6 @@ services:
       dockerfile: Dockerfile
     container_name: merginmaps-server
     restart: always
-    user: 901:999
     volumes:
         - ./projects:/data
     env_file:
@@ -46,7 +45,6 @@ services:
       context: ./server
       dockerfile: Dockerfile
     container_name: celery-beat
-    user: 901:999
     env_file:
       - .prod.env
     depends_on:
@@ -61,7 +59,6 @@ services:
       context: ./server
       dockerfile: Dockerfile
     container_name: celery-worker
-    user: 901:999
     env_file:
       - .prod.env
     depends_on:
@@ -84,7 +81,6 @@ services:
       - db
     volumes:
       - ./projects:/data  # map data dir to host
-      #- ./nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "8080:8080"
     networks:

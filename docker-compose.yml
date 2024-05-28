@@ -30,7 +30,7 @@ services:
     container_name: merginmaps-server
     restart: always
     volumes:
-        - ./projects:/data
+      - ./projects:/data
     env_file:
       - .prod.env
     depends_on:

@@ -44,4 +44,4 @@ RUN pip3 install flower==0.9.7
 USER mergin
 
 COPY ./entrypoint.sh .
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]

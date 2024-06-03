@@ -27,10 +27,13 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
+      args:
+        - "UID=${HOST_UID:-901}"
+        - "GID=${HOST_GID:-999}"
     container_name: merginmaps-server
     restart: always
     volumes:
-      - ./projects:/data
+      - ./projects:/home/mergin/app/data
     env_file:
       - .prod.env
     depends_on:
@@ -44,6 +47,9 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
+      args:
+        - "UID=${HOST_UID:-901}"
+        - "GID=${HOST_GID:-999}"
     container_name: celery-beat
     env_file:
       - .prod.env
@@ -58,6 +64,9 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
+      args:
+        - "UID=${HOST_UID:-901}"
+        - "GID=${HOST_GID:-999}"
     container_name: celery-worker
     env_file:
       - .prod.env

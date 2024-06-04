@@ -7,8 +7,6 @@ services:
     image: postgis/postgis:14-3.4
     container_name: merginmaps-db
     restart: always
-    ports:
-      - "5432:5432"
     networks:
       - merginmaps
     environment:

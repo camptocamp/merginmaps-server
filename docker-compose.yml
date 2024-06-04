@@ -27,7 +27,7 @@ services:
       dockerfile: Dockerfile
       args:
         - "UID=${HOST_UID:-901}"
-        - "GID=${HOST_GID:-999}"
+        - "GID=${HOST_GID:-901}"
     container_name: merginmaps-server
     restart: always
     volumes:
@@ -47,7 +47,7 @@ services:
       dockerfile: Dockerfile
       args:
         - "UID=${HOST_UID:-901}"
-        - "GID=${HOST_GID:-999}"
+        - "GID=${HOST_GID:-901}"
     container_name: celery-beat
     env_file:
       - .prod.env
@@ -64,7 +64,7 @@ services:
       dockerfile: Dockerfile
       args:
         - "UID=${HOST_UID:-901}"
-        - "GID=${HOST_GID:-999}"
+        - "GID=${HOST_GID:-901}"
     container_name: celery-worker
     env_file:
       - .prod.env
